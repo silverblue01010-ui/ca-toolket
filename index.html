@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CA AI Toolkit — Indian CA Firms</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="logo-mark">CA</div>
+  <div class="header-text">
+    <h1>CA AI Toolkit</h1>
+    <p>Powered by Claude · Built for Indian CA Firms</p>
+  </div>
+</header>
+
+<!-- ── API Key Notice ── -->
+<div id="api-banner">
+  <span class="banner-icon">🔑</span>
+  <span>
+    API key not configured. Open <strong>config.js</strong> and paste your key from
+    <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>.
+    Then refresh this page.
+  </span>
+</div>
+
+<!-- ── Tab Navigation ── -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" role="tab" data-tab="gst" aria-selected="true">
+    <span class="tab-icon">🧾</span> GST Invoice
+  </button>
+  <button class="tab-btn" role="tab" data-tab="reminder" aria-selected="false">
+    <span class="tab-icon">📧</span> Client Reminder
+  </button>
+  <button class="tab-btn" role="tab" data-tab="engagement" aria-selected="false">
+    <span class="tab-icon">📋</span> Engagement Letter
+  </button>
+  <button class="tab-btn" role="tab" data-tab="itr" aria-selected="false">
+    <span class="tab-icon">⚖️</span> ITR Notice Reply
+  </button>
+</nav>
+
+<!-- ── Main ── -->
+<main>
+
+  <!-- ── Tool 1: GST Invoice ── -->
+  <section id="tab-gst" class="tab-panel active" role="tabpanel">
+    <div class="card">
+      <div class="card-title">GST Invoice Description</div>
+      <div class="card-subtitle">Generates a GST-compliant 2–3 line service description for your tax invoice.</div>
+
+      <div class="field">
+        <label for="gst-service">Service Type</label>
+        <input type="text" id="gst-service" placeholder="e.g. Monthly GST Return Filing (GSTR-3B)" />
+      </div>
+      <div class="field">
+        <label for="gst-client">Client Name</label>
+        <input type="text" id="gst-client" placeholder="e.g. M/s Sharma Trading Co." />
+      </div>
+      <div class="field">
+        <label for="gst-period">Billing Period</label>
+        <input type="text" id="gst-period" placeholder="e.g. April 2025" />
+      </div>
+
+      <button class="btn-generate" id="btn-gst">
+        <div class="spinner"></div>
+        <span class="btn-label">Generate Description</span>
+      </button>
+    </div>
+
+    <div class="output-card">
+      <div class="output-header">
+        <span class="output-label">Generated Output</span>
+        <button class="btn-copy" id="copy-gst">📋 Copy</button>
+      </div>
+      <div class="output-box empty" id="out-gst">Output will appear here…</div>
+    </div>
+  </section>
+
+  <!-- ── Tool 2: Client Reminder ── -->
+  <section id="tab-reminder" class="tab-panel" role="tabpanel">
+    <div class="card">
+      <div class="card-title">Client Reminder Email</div>
+      <div class="card-subtitle">Writes a formal, professional email reminding your client about a pending item.</div>
+
+      <div class="field">
+        <label for="rem-client">Client Name</label>
+        <input type="text" id="rem-client" placeholder="e.g. Mr. Rajesh Gupta" />
+      </div>
+      <div class="field">
+        <label for="rem-item">Pending Item</label>
+        <input type="text" id="rem-item" placeholder="e.g. Form 16, bank statements for FY 2024-25" />
+      </div>
+      <div class="field">
+        <label for="rem-deadline">Deadline Date</label>
+        <input type="date" id="rem-deadline" />
+      </div>
+      <div class="field">
+        <label for="rem-firm">Your Firm Name</label>
+        <input type="text" id="rem-firm" placeholder="e.g. Aditya & Associates" />
+      </div>
+
+      <button class="btn-generate" id="btn-reminder">
+        <div class="spinner"></div>
+        <span class="btn-label">Generate Email</span>
+      </button>
+    </div>
+
+    <div class="output-card">
+      <div class="output-header">
+        <span class="output-label">Generated Output</span>
+        <button class="btn-copy" id="copy-reminder">📋 Copy</button>
+      </div>
+      <div class="output-box empty" id="out-reminder">Output will appear here…</div>
+    </div>
+  </section>
+
+  <!-- ── Tool 3: Engagement Letter ── -->
+  <section id="tab-engagement" class="tab-panel" role="tabpanel">
+    <div class="card">
+      <div class="card-title">Engagement Letter Drafter</div>
+      <div class="card-subtitle">Generates a complete ICAI-style engagement letter ready to print on letterhead.</div>
+
+      <div class="field">
+        <label for="eng-client">Client Name</label>
+        <input type="text" id="eng-client" placeholder="e.g. M/s Patel Enterprises Pvt. Ltd." />
+      </div>
+      <div class="field">
+        <label for="eng-firm">Firm Name</label>
+        <input type="text" id="eng-firm" placeholder="e.g. Aditya & Associates, Chartered Accountants" />
+      </div>
+      <div class="field">
+        <label for="eng-scope">Scope of Work</label>
+        <textarea id="eng-scope" placeholder="e.g. Statutory audit, GST return filing (monthly), TDS compliance, MCA annual filing"></textarea>
+      </div>
+      <div class="field">
+        <label for="eng-fee">Fee Amount</label>
+        <input type="text" id="eng-fee" placeholder="e.g. ₹25,000 per month / ₹3,00,000 per annum" />
+      </div>
+      <div class="field">
+        <label for="eng-payment">Payment Terms</label>
+        <input type="text" id="eng-payment" placeholder="e.g. Monthly advance, due by 5th of each month" />
+      </div>
+
+      <button class="btn-generate" id="btn-engagement">
+        <div class="spinner"></div>
+        <span class="btn-label">Draft Letter</span>
+      </button>
+    </div>
+
+    <div class="output-card">
+      <div class="output-header">
+        <span class="output-label">Generated Output</span>
+        <button class="btn-copy" id="copy-engagement">📋 Copy</button>
+      </div>
+      <div class="output-box empty" id="out-engagement">Output will appear here…</div>
+    </div>
+  </section>
+
+  <!-- ── Tool 4: ITR Notice Reply ── -->
+  <section id="tab-itr" class="tab-panel" role="tabpanel">
+    <div class="card">
+      <div class="card-title">ITR Notice Reply Drafter</div>
+      <div class="card-subtitle">Drafts a formal reply to Income Tax Department notices addressed to the AO.</div>
+
+      <div class="field">
+        <label for="itr-section">Notice Section</label>
+        <input type="text" id="itr-section" placeholder="e.g. Section 143(1)(a), Section 148, Section 139(9)" />
+      </div>
+      <div class="field">
+        <label for="itr-ay">Assessment Year</label>
+        <input type="text" id="itr-ay" placeholder="e.g. AY 2024-25" />
+      </div>
+      <div class="field">
+        <label for="itr-issue">Issue Raised by Department</label>
+        <textarea id="itr-issue" placeholder="e.g. Mismatch in income reported in ITR vs Form 26AS — TDS credit of ₹18,400 not claimed"></textarea>
+      </div>
+      <div class="field">
+        <label for="itr-explanation">Client's Explanation</label>
+        <textarea id="itr-explanation" placeholder="e.g. TDS was from a one-time FD interest payment by XYZ Bank, inadvertently omitted. Supporting TDS certificate available."></textarea>
+      </div>
+
+      <button class="btn-generate" id="btn-itr">
+        <div class="spinner"></div>
+        <span class="btn-label">Draft Reply</span>
+      </button>
+    </div>
+
+    <div class="output-card">
+      <div class="output-header">
+        <span class="output-label">Generated Output</span>
+        <button class="btn-copy" id="copy-itr">📋 Copy</button>
+      </div>
+      <div class="output-box empty" id="out-itr">Output will appear here…</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Toast ── -->
+<div id="toast">✓ Copied to clipboard</div>
+
+<!-- ── Scripts (order matters) ── -->
+<script src="config.js"></script>
+<script src="prompts.js"></script>
+<script src="api.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
