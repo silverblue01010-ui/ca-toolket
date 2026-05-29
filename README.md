@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CA AI Toolkit
 
 4 AI-powered tools for Indian CA firms — built with plain HTML, CSS, JS.
@@ -41,3 +42,7 @@ Before sharing the app publicly, move the API key to a backend proxy (see handof
 
 ## Cost Estimate
 ~₹0.08–0.25 per generation at current Claude Sonnet rates.
+=======
+# ca-toolket
+A type of toolkit use get GST Invoice, Client Reminder, Engagement Letter, ITR Notice Reply
+>>>>>>> a097ef2bd8119d6b1f955e01bcdfc5c17e641010
